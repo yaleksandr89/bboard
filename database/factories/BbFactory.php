@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Bb;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 use Ramsey\Uuid\Exception\BuilderNotFoundException;
@@ -12,6 +13,9 @@ class BbFactory extends Factory
 {
     protected $model = Bb::class;
 
+    /**
+     * @throws Exception
+     */
     public function definition(): array
     {
         $user = User::inRandomOrder()->first();
@@ -21,12 +25,12 @@ class BbFactory extends Factory
         }
 
         return [
-            'title' => $this->faker->word(),
-            'content' => $this->faker->word(),
-            'price' => $this->faker->randomFloat(2, 5, 9999999),
+            'title' => $this->faker->words(random_int(1,3), true),
+            'content' => $this->faker->text(1000),
+            'price' => $this->faker->randomFloat(2, 5, 999999),
             'user_id' => $user,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'), // Генерация случайной даты в последнем году
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'), // Генерация случайной даты в последнем году
         ];
     }
 }

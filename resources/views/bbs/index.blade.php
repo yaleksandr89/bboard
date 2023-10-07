@@ -1,9 +1,8 @@
-@extends('layouts.bbs')
+@extends('layouts.app')
 
 @php
     use Illuminate\Database\Eloquent\Collection;
     use App\Models\Bb;
-
     /** @var Collection|Bb[] $bbs */
 @endphp
 
@@ -26,9 +25,11 @@
                 <tr>
                     <td><h4>{{ $bb->title }}</h4></td>
                     <td>{{ $bb->price }}</td>
-                    <td>{{ $bb->user->name }}</td>
                     <td>
-                        <a href="{{ route('bbs.detail', $bb) }}">Подробнее...</a>
+                        {{ $bb->user->name }} ({{ $bb->user->email }})
+                    </td>
+                    <td>
+                        <a href="{{ route('bbs.detail', $bb) }}">Подробнее</a>
                     </td>
                 </tr>
             @endforeach
