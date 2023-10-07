@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +12,10 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->float('price');
+            $table->float('price', 10);
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
 
             $table->index('created_at');
