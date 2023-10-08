@@ -7,7 +7,7 @@ return [
             'failed' => 'An error occurred while creating the ad',
         ],
         'update' => [
-            'success' => 'Ad (ID: :id) successfully updated',
+            'success' => 'Ad successfully updated',
             'failed' => 'An error occurred while updating the ad (id: :id)',
         ],
 

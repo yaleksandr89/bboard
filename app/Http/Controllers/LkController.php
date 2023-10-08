@@ -80,8 +80,8 @@ class LkController extends Controller
         $bb->save();
 
         return redirect()
-            ->route('lk.index')
-            ->with('success', trans('notification.bb.update.success', ['id' => $bb->id]));
+            ->back()
+            ->with('success', trans('notification.bb.update.success'));
     }
 
     public function delete(Bb $bb): View

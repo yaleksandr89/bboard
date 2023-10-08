@@ -76,7 +76,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-secondary">
-                                        {{ __('ap.auth.register') }}
+                                        {{ __('auth.register') }}
                                     </button>
                                 </div>
                             </div>
