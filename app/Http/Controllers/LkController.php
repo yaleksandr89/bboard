@@ -18,7 +18,13 @@ class LkController extends Controller
 
     public function index(): View
     {
-        $bbs = Auth::user()?->bbs()->get();
+        $user = Auth::user();
+
+        if (!$user) {
+            throw new RuntimeException('User not fount.');
+        }
+
+        $bbs = $user->bbs()->latest()->get();
 
         return view('lk.index', compact('bbs'));
     }
@@ -44,7 +50,9 @@ class LkController extends Controller
                 'price' => $request->float('price'),
             ]);
 
-        return redirect()->route('lk.index');
+        return redirect()
+            ->route('lk.index')
+            ->with('success', trans('notification.bb.store.success'));
     }
 
     public function edit(Bb $bb): View
@@ -55,12 +63,15 @@ class LkController extends Controller
     public function update(Request $request, Bb $bb): RedirectResponse
     {
         $bb->fill([
-                'title' => $request->string('title'),
-                'content' => $request->string('content'),
-                'price' => $request->float('price'),
-            ]);
+            'title' => $request->string('title'),
+            'content' => $request->string('content'),
+            'price' => $request->float('price'),
+        ]);
         $bb->save();
-        return redirect()->route('lk.index');
+
+        return redirect()
+            ->route('lk.index')
+            ->with('success', trans('notification.bb.update.success', ['id' => $bb->id]));
     }
 
     public function delete(Bb $bb): View
@@ -72,6 +83,8 @@ class LkController extends Controller
     {
         $bb->delete();
 
-        return redirect()->route('lk.index');
+        return redirect()
+            ->route('lk.index')
+            ->with('success', trans('notification.bb.destroy.success', ['id' => $bb->id]));
     }
 }

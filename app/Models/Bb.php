@@ -14,7 +14,6 @@ class Bb extends Model
         'title',
         'content',
         'price',
-        'user_id',
     ];
 
     public function user(): BelongsTo
