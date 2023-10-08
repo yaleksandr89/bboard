@@ -11,6 +11,12 @@ use RuntimeException;
 
 class LkController extends Controller
 {
+    private const BB_VALIDATOR = [
+        'title' => 'required|min:5|max:150',
+        'content' => 'required|min:5|max:150',
+        'price' => 'required|numeric',
+    ];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -42,12 +48,14 @@ class LkController extends Controller
             throw new RuntimeException('User not fount.');
         }
 
+        $validated = $request->validate(self::BB_VALIDATOR);
+
         $user
             ->bbs()
             ->create([
-                'title' => $request->string('title'),
-                'content' => $request->string('content'),
-                'price' => $request->float('price'),
+                'title' => $validated['title'],
+                'content' => $validated['content'],
+                'price' => $validated['price'],
             ]);
 
         return redirect()
@@ -62,10 +70,12 @@ class LkController extends Controller
 
     public function update(Request $request, Bb $bb): RedirectResponse
     {
+        $validated = $request->validate(self::BB_VALIDATOR);
+
         $bb->fill([
-            'title' => $request->string('title'),
-            'content' => $request->string('content'),
-            'price' => $request->float('price'),
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+            'price' => $validated['price'],
         ]);
         $bb->save();
 
