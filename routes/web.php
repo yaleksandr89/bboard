@@ -19,13 +19,24 @@ Route::get('/',[BbsController::class, 'index'])->name('bbs.index');
 Auth::routes();
 
 Route::group(['prefix' => 'lk'], static function () {
-    Route::get('', [LkController::class, 'index'])->name('lk.index');
-    Route::get('create', [LkController::class, 'create'])->name('lk.create');
-    Route::post('', [LkController::class, 'store'])->name('lk.store');
-    Route::get('{bb}/edit', [LkController::class, 'edit'])->name('lk.edit');
-    Route::patch('{bb}', [LkController::class, 'update'])->name('lk.update');
-    Route::get('{bb}/delete', [LkController::class, 'delete'])->name('lk.delete');
-    Route::delete('{bb}', [LkController::class, 'destroy'])->name('lk.destroy');
+    Route::get('', [LkController::class, 'index'])
+        ->name('lk.index');
+    Route::get('create', [LkController::class, 'create'])
+        ->name('lk.create');
+    Route::post('', [LkController::class, 'store'])
+        ->name('lk.store');
+    Route::get('{bb}/edit', [LkController::class, 'edit'])
+        ->name('lk.edit')
+        ->middleware('can:update,bb');
+    Route::patch('{bb}', [LkController::class, 'update'])
+        ->name('lk.update')
+        ->middleware('can:update,bb');
+    Route::get('{bb}/delete', [LkController::class, 'delete'])
+        ->name('lk.delete')
+        ->middleware('can:destroy,bb');
+    Route::delete('{bb}', [LkController::class, 'destroy'])
+        ->name('lk.destroy')
+        ->middleware('can:destroy,bb');
 });
 
 Route::get('/{bb}',[BbsController::class, 'detail'])->name('bbs.detail');
