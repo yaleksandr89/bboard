@@ -13,7 +13,7 @@ class LkController extends Controller
 {
     private const BB_VALIDATOR = [
         'title' => 'required|min:5|max:150',
-        'content' => 'required|min:5|max:150',
+        'content' => 'required|min:5|max:5000',
         'price' => 'required|numeric',
     ];
 

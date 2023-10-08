@@ -142,9 +142,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'price' => [
+            'required' => 'Distribution of goods for free is not allowed',
+        ]
     ],
 
     /*
@@ -158,6 +158,9 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'title' => 'Title',
+        'content' => 'Ad content',
+        'price' => 'Price',
+    ],
 ];

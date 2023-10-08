@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Удаление "' . $bb->title .'"')
+@section('title', __('lk.deleting') . ' "' . $bb->title .'"')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1 class="my-3 text-center">{{ $bb->title }}</h1>
+            <h1 class="my-3 text-center">{{ __('lk.deleting') }} "{{ $bb->title }}"</h1>
         </div>
         <div class="card-body">
             <p class="card-text">
@@ -13,7 +13,7 @@
             </p>
             <p class="card-text">
                 <code>
-                    {{ $bb->price }} руб.
+                    {{ $bb->price }} {{ __('bbs.rub') }}.
                 </code>
             </p>
             <p class="card-text">
@@ -28,8 +28,10 @@
                 @csrf
                 @method('DELETE')
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <input type="submit" class="btn btn-danger" value="Удалить">
-                    <a class="btn btn-secondary" href="{{ route('lk.index') }}">На перечень объявлений</a>
+                    <input type="submit" class="btn btn-danger" value="{{ __('lk.delete') }}">
+                    <a class="btn btn-secondary" href="{{ url()->previous() }}">
+                        {{ __('bbs.back') }}
+                    </a>
                 </div>
             </form>
         </div>

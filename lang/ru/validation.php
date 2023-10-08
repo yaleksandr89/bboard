@@ -117,10 +117,17 @@ return [
     'uploaded' => 'Загрузка поля :attribute не удалась.',
     'url' => 'Значение поля :attribute имеет ошибочный формат URL.',
     'uuid' => 'Значение поля :attribute должно быть корректным UUID.',
+    'model_failed' => 'Передана некорректная модель',
+
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'price' => [
+            'required' => 'Раздача товаров даром не допускается',
+        ]
     ],
-    'model_failed' => 'Передана некорректная модель'
+
+    'attributes' => [
+        'title' => 'Название',
+        'content' => 'Содержание объявления',
+        'price' => 'Цена',
+    ],
 ];

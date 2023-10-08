@@ -5,7 +5,7 @@
     /** @var Bb $bb */
 @endphp
 
-@section('title',  )
+@section('title', $bb->title)
 
 @section('content')
     <div class="card">
@@ -18,16 +18,30 @@
             </p>
             <p class="card-text">
                 <code>
-                    {{ $bb->price }} руб.
+                    {{ $bb->price }} {{ __('bbs.rub') }}.
                 </code>
             </p>
 
-            <a href="{{ route('bbs.index') }}" class="btn btn-sm btn-secondary">На перечень объявлений</a>
+            <a href="{{ route('bbs.index') }}" class="btn btn-sm btn-secondary">
+                {{ __('bbs.list_ads') }}
+            </a>
         </div>
         <div class="card-footer text-muted">
-            <span class="card-text">{{ $bb->user->name }}</span>
-            /
-            <span class="card-text">{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</span>
+            <p class="card-text">
+                <span class="card-text">{{ $bb->user->name }}</span>
+                /
+                <span class="card-text">{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</span>
+
+            @if (Gate::allows('update', $bb) || Gate::allows('destroy', $bb))
+                <p class="card-text">
+                    @can('update', $bb)
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('lk.edit', $bb) }}">{{ __('lk.change') }}</a>
+                    @endcan
+                    @can('destroy', $bb)
+                        <a class="btn btn-sm btn-outline-danger" href="{{ route('lk.delete', $bb) }}">{{ __('lk.delete') }}</a>
+                    @endcan
+                </p>
+            @endif
         </div>
     </div>
 @endsection
