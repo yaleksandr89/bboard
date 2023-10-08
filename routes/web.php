@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BbsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/',[BbsController::class, 'index'])->name('bbs.index');
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/',[BbsController::class, 'index'])->name('bbs.index');
+Route::get('/lk', [LkController::class, 'index'])->name('lk.index');
 Route::get('/{bb}',[BbsController::class, 'detail'])->name('bbs.detail');
