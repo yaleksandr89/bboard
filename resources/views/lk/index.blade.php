@@ -4,8 +4,10 @@
 
 @section('content')
     <h1 class="my-3 text-center">Добро пожаловать, {{ Auth::user()->name }}!</h1>
-    <p class="text-end">000
-{{--        <a href="{{ route('bb.create') }}">Добавить объявление</a>--}}
+    <p class="text-end">
+        <a class="btn btn-outline-secondary" href="{{ route('lk.create') }}">
+            Добавить объявление
+        </a>
     </p>
     @if (count($bbs) > 0)
         <table class="table table-striped table-borderless">
@@ -14,7 +16,7 @@
                 <th>Товар</th>
                 <th>Цена, руб.</th>
                 <th>Создано</th>
-                <th colspan="2">Действия</th>
+                <th>Действия</th>
             </tr>
             </thead>
             <tbody>
@@ -23,11 +25,11 @@
                     <td><h3>{{ $bb->title }}</h3></td>
                     <td>{{ $bb->price }}</td>
                     <td>{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</td>
-                    <td>111
-{{--                        <a href="{{ route('bb.edit', $bb) }}">Изменить</a>--}}
-                    </td>
-                    <td>222
-{{--                        <a href="{{ route('bb.delete', $bb) }}">Удалить</a>--}}
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a class="btn btn-sm btn-warning" href="{{ route('lk.edit', $bb) }}">Изменить</a>
+                            <a class="btn btn-sm btn-danger" href="{{ route('lk.delete', $bb) }}">Удалить</a>
+                        </div>
                     </td>
                 </tr>
             @endforeach

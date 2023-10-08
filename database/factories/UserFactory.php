@@ -29,9 +29,24 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'name' => 'Admin',
-                'email' => 'test@test.ru',
+                'name' => 'Александр',
+                'email' => 'y.aleksandr89@yandex.ru',
+                'email_verified_at' => now(),
                 'password' => '$2y$10$jpdabtcfHTd40nl/YDdkN.QCi7t5uXR1bY5pQGiCFPSNQ8WjzLJnG', // 111
+                'remember_token' => Str::random(10),
+            ];
+        });
+    }
+
+    public function editor(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'name' => 'Корректор',
+                'email' => 'editor@bboard.col',
+                'email_verified_at' => now(),
+                'password' => '$2y$10$jpdabtcfHTd40nl/YDdkN.QCi7t5uXR1bY5pQGiCFPSNQ8WjzLJnG', // 111
+                'remember_token' => Str::random(10),
             ];
         });
     }
