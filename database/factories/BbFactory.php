@@ -24,13 +24,16 @@ class BbFactory extends Factory
             throw new BuilderNotFoundException('User is empty!');
         }
 
+        $isDeleted = $this->faker->boolean(30);
+
         return [
             'title' => $this->faker->words(random_int(1,3), true),
             'content' => $this->faker->text(1000),
             'price' => $this->faker->randomFloat(2, 5, 999999),
             'user_id' => $user,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'), // Генерация случайной даты в последнем году
-            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'), // Генерация случайной даты в последнем году
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'),
+            'deleted_at' => $isDeleted ? $this->faker->dateTimeBetween('-1 month', 'now', 'Europe/Moscow') : null,
         ];
     }
 }
