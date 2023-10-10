@@ -1,19 +1,18 @@
 @extends('layouts.app')
 
-@section('title', __('lk.edit') . ' "' . $bb->title . '"')
+@section('title', __('lk.restored') . ' "' . $deletedDb->title . '"')
 
 @section('content')
-    <h1 class="my-3 text-center">{{ __('lk.edit') }} "{{ $bb->title }}"</h1>
-    <form action="{{ route('lk.update', $bb) }}" method="POST">
+    <h1 class="my-3 text-center">{{ __('lk.restored') }} "{{ $deletedDb->title }}"</h1>
+    <form action="{{ route('lk.restore', $deletedDb) }}" method="POST">
         @csrf
-        @method('PATCH')
         <div class="mb-3">
             <label for="txtTitle" class="form-label">
                 {{ __('bbs.title') }}
             </label>
             <input name="title" id="txtTitle"
                    class="form-control @error('title') is-invalid @enderror"
-                   value="{{ old('title', $bb->title) }}">
+                   value="{{ old('title', $deletedDb->title) }}">
             @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -24,7 +23,7 @@
             </label>
             <textarea name="content" id="txtContent"
                       class="form-control @error('content') is-invalid @enderror"
-                      rows="10">{{ old('content', $bb->content) }}</textarea>
+                      rows="10">{{ old('content', $deletedDb->content) }}</textarea>
             @error('content')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -35,16 +34,13 @@
             </label>
             <input name="price" id="txtPrice"
                    class="form-control @error('price') is-invalid @enderror"
-                   value="{{ old('price', $bb->price) }}">
+                   value="{{ old('price', $deletedDb->price) }}">
             @error('price')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <input type="submit" class="btn btn-success" value="{{ __('lk.save') }}">
-            <a class="btn btn-danger" href="{{ route('lk.delete', $bb) }}">
-                {{ __('lk.delete') }}
-            </a>
+            <input type="submit" class="btn btn-warning" value="{{ __('lk.restored') }}">
             <a class="btn btn-secondary" href="{{ route('lk.index') }}">
                 {{ __('lk.list') }}
             </a>

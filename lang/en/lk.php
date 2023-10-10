@@ -5,6 +5,8 @@ return [
     'welcome' => 'Welcome',
     'add_ad' => 'Add an ad',
     'created' => 'Created',
+    'updated' => 'Updated',
+    'deleted' => 'Deleted',
     'actions' => 'Actions',
     'change' => 'Change',
     'delete' => 'Delete',
@@ -12,4 +14,6 @@ return [
     'creating_ad' => 'Creating an ad',
     'edit' => 'Edit',
     'save' => 'Save',
+    'restored' => 'Restore',
+    'list' => 'Go back to the list',
 ];

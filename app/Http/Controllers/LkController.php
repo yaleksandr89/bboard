@@ -30,9 +30,16 @@ class LkController extends Controller
             throw new RuntimeException('User not fount.');
         }
 
-        $bbs = $user->bbs()->latest()->get();
+        $bbs = $user
+            ->bbs()
+            ->latest()
+            ->get();
+        $trashedBbs = $user
+            ->bbs()->onlyTrashed()
+            ->latest()
+            ->get();
 
-        return view('lk.index', compact('bbs'));
+        return view('lk.index', compact('bbs', 'trashedBbs'));
     }
 
     public function create(): View
@@ -96,5 +103,35 @@ class LkController extends Controller
         return redirect()
             ->route('lk.index')
             ->with('success', trans('notification.bb.destroy.success', ['id' => $bb->id]));
+    }
+
+    public function deleted(int $id)
+    {
+        $deletedDb = Bb::withTrashed()
+            ->findOrFail($id);
+
+        return view('lk.deleted', compact('deletedDb'));
+    }
+
+    public function restore(Request $request, int $id): RedirectResponse
+    {
+        $deletedDb = Bb::withTrashed()
+            ->findOrFail($id);
+
+        $validated = $request->validate(self::BB_VALIDATOR);
+
+        $deletedDb->fill([
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+            'price' => $validated['price'],
+        ]);
+        $deletedDb->deleted_at = null;
+
+        $deletedDb
+            ->save();
+
+        return redirect()
+            ->route('lk.index')
+            ->with('success', trans('notification.bb.restored.success', ['id' => $deletedDb->id]));
     }
 }

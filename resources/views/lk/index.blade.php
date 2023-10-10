@@ -42,13 +42,14 @@
     <div class="tab-content" id="lkTabsContent">
         <!-- Таб 1: Список объявлений -->
         <div class="tab-pane fade show active" id="list-bbs" role="tabpanel" aria-labelledby="list-bbs-tab">
-            @if (count($bbs) > 0)
+            @if ($bbs->isNotEmpty())
                 <table class="table table-striped table-borderless">
                     <thead>
                     <tr>
                         <th>{{ __('bbs.title') }}</th>
                         <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
                         <th>{{ __('lk.created') }}</th>
+                        <th>{{ __('lk.updated') }}</th>
                         <th>{{ __('lk.actions') }}</th>
                     </tr>
                     </thead>
@@ -58,23 +59,63 @@
                             <td><h3>{{ $bb->title }}</h3></td>
                             <td>{{ $bb->price }}</td>
                             <td>{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</td>
+                            <td>{{ $bb->updated_at->locale('ru')->isoFormat('LLL') }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('lk.edit', $bb) }}">{{ __('lk.change') }}</a>
-                                    <a class="btn btn-sm btn-outline-danger" href="{{ route('lk.delete', $bb) }}">{{ __('lk.delete') }}</a>
+                                    <a class="btn btn-sm btn-secondary" href="{{ route('lk.edit', $bb) }}">
+                                        {{ __('lk.change') }}
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" href="{{ route('lk.delete', $bb) }}">
+                                        {{ __('lk.delete') }}
+                                    </a>
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+            @else
+                <div class="alert alert-secondary mt-3" role="alert">
+                    {{ __('bbs.no_ads') }}
+                </div>
             @endif
         </div>
         <!-- Таб 2: Список удаленных объявлений -->
         <div class="tab-pane fade" id="deleted-bbs" role="tabpanel" aria-labelledby="deleted-bbs-tab">
-            <!-- Здесь разместите содержимое для второй вкладки -->
-            <h3>Список удаленных объявлений</h3>
-            <!-- Ваш список удаленных объявлений и другой контент здесь -->
+            @if ($trashedBbs->isNotEmpty())
+                <table class="table table-striped table-borderless">
+                    <thead>
+                    <tr>
+                        <th>{{ __('bbs.title') }}</th>
+                        <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
+                        <th>{{ __('lk.created') }}</th>
+                        <th>{{ __('lk.deleted') }}</th>
+                        <th>{{ __('lk.actions') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($trashedBbs as $trashedBb)
+                        <tr>
+                            <td><h3>{{ $trashedBb->title }}</h3></td>
+                            <td>{{ $trashedBb->price }}</td>
+                            <td>{{ $trashedBb->created_at->locale('ru')->isoFormat('LLL') }}</td>
+                            <td>{{ $trashedBb->deleted_at->locale('ru')->isoFormat('LLL') }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <a class="btn btn-sm btn-warning" href="{{ route('lk.trash', $trashedBb) }}">
+                                        {{ __('lk.restored') }}
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <div class="alert alert-secondary mt-3" role="alert">
+                    {{ __('bbs.no_ads') }}
+                </div>
+            @endif
         </div>
     </div>
 @endsection

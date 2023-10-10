@@ -37,6 +37,10 @@ Route::group(['prefix' => 'lk'], static function () {
     Route::delete('{bb}', [LkController::class, 'destroy'])
         ->name('lk.destroy')
         ->middleware('can:destroy,bb');
+    Route::get('{id}/restore', [LkController::class, 'deleted'])
+        ->name('lk.trash');
+    Route::post('{id}/restore', [LkController::class, 'restore'])
+        ->name('lk.restore');
 });
 
 Route::get('/{bb}',[BbsController::class, 'detail'])->name('bbs.detail');
