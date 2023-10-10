@@ -58,3 +58,23 @@ h1 {
 body {
     font-family: 'Nunito', sans-serif;
 }
+
+.pagination-secondary {
+    --bs-pagination-color: #6c757d;
+    --bs-pagination-bg: var(--bs-body-bg);
+    --bs-pagination-border-width: var(--bs-border-width);
+    --bs-pagination-border-color: var(--bs-border-color);
+    --bs-pagination-border-radius: var(--bs-border-radius);
+    --bs-pagination-hover-color: #fff;
+    --bs-pagination-hover-bg: #5c636a;
+    --bs-pagination-hover-border-color: #565e64;
+    --bs-pagination-focus-color: #6c757d;
+    --bs-pagination-focus-bg: var(--bs-secondary-bg);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: #565e64;
+    --bs-pagination-active-border-color: #51585e;
+    --bs-pagination-disabled-color: var(--bs-secondary-color);
+    --bs-pagination-disabled-bg: var(--bs-secondary-bg);
+    --bs-pagination-disabled-border-color: var(--bs-border-color);
+}

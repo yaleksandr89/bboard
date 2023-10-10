@@ -8,7 +8,9 @@ class BbsController extends Controller
 {
     public function index()
     {
-        $bbs = Bb::with('user')->latest()->get();
+        $bbs = Bb::with('user')
+            ->latest()
+            ->paginate();
 
         return view('bbs.index', compact('bbs'));
     }

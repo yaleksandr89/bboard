@@ -31,12 +31,13 @@
                         {{ $bb->user->name }}
                     </td>
                     <td>
-                        <a href="{{ route('bbs.detail', $bb) }}">{{ __('bbs.more') }}</a>
+                        <a class="btn btn-sm btn-secondary" href="{{ route('bbs.detail', $bb) }}">{{ __('bbs.more') }}</a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        {{ $bbs->links('vendor.pagination.bootstrap-5-customize') }}
     @else
         <div class="alert alert-primary" role="alert">
             {{ __('bbs.no_ads') }}
