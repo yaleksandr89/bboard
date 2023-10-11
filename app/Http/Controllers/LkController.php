@@ -29,15 +29,15 @@ class LkController extends Controller
         if (!$user) {
             throw new RuntimeException('User not fount.');
         }
-
         $bbs = $user
             ->bbs()
             ->latest()
-            ->get();
+            ->paginate(perPage: 10, pageName: 'bbs');
+
         $trashedBbs = $user
             ->bbs()->onlyTrashed()
             ->latest()
-            ->get();
+            ->paginate(perPage: 10, pageName: 'trashed_bbs');
 
         return view('lk.index', compact('bbs', 'trashedBbs'));
     }

@@ -74,6 +74,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $bbs->links('vendor.pagination.bootstrap-5-customize') }}
             @else
                 <div class="alert alert-secondary mt-3" role="alert">
                     {{ __('bbs.no_ads') }}
@@ -111,6 +112,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $trashedBbs->links('vendor.pagination.bootstrap-5-customize') }}
             @else
                 <div class="alert alert-secondary mt-3" role="alert">
                     {{ __('bbs.no_ads') }}
