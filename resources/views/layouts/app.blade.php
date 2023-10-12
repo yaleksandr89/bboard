@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.scss'])
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description', config('app.description'))">
 </head>
@@ -76,6 +76,6 @@
         </div>
     </main>
 </div>
-<script src="{{ asset('js/app.js') }}"></script>
+@vite(['resources/js/app.js'])
 </body>
 </html>
