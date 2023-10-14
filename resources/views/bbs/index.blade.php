@@ -19,6 +19,9 @@
                 <th>{{ __('bbs.title') }}</th>
                 <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
                 <th>{{ __('bbs.author') }}</th>
+                <th>{{ __('lk.created') }}</th>
+                <th>{{ __('lk.updated') }}</th>
+                <th>{{ __('lk.actions') }}</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -30,6 +33,8 @@
                     <td>
                         {{ $bb->user->name }}
                     </td>
+                    <td>{{ $bb->created_at->locale('ru')->isoFormat('LL') }}</td>
+                    <td>{{ $bb->updated_at->locale('ru')->isoFormat('LL') }}</td>
                     <td>
                         <a class="btn btn-sm btn-secondary" href="{{ route('bbs.detail', $bb) }}">{{ __('bbs.more') }}</a>
                     </td>
