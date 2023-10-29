@@ -24,16 +24,16 @@
             </p>
         </div>
         <div class="card-footer text-muted">
-            <form action="{{ route('lk.destroy', $bb) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <input type="submit" class="btn btn-danger" value="{{ __('lk.delete') }}">
-                    <a class="btn btn-secondary" href="{{ url()->previous() }}">
-                        {{ __('bbs.back') }}
-                    </a>
-                </div>
-            </form>
+            <x-form action="{{ route('lk.destroy', $bb) }}" method="DELETE">
+                @bind($bb)
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <x-form-submit class="btn btn-danger">{{ __('lk.delete') }}</x-form-submit>
+                        <a class="btn btn-secondary" href="{{ url()->previous() }}">
+                            {{ __('bbs.back') }}
+                        </a>
+                    </div>
+                @endbind
+            </x-form>
         </div>
     </div>
 @endsection

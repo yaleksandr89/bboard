@@ -20,4 +20,17 @@ enum TypeEnum: int
             default => throw new Exception('Unexpected match value'),
         };
     }
+
+    /**
+     * @throws Exception
+     */
+    public static function forFormSelection(): array
+    {
+        $options = [];
+        foreach (self::cases() as $case) {
+            $options[$case->value] = __($case->text());
+        }
+
+        return $options;
+    }
 }

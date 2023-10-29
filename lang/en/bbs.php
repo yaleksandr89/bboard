@@ -12,4 +12,8 @@ return [
     'list_ads' => 'On the list of ads',
     'back' => 'Back',
     'type' => 'Type',
+    'placeholder' => [
+        'content' => 'Enter the ad text',
+        'type' => 'Select the type of ad',
+    ]
 ];
