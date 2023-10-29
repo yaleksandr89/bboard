@@ -11,4 +11,5 @@ return [
     'no_ads' => 'There are no ads',
     'list_ads' => 'On the list of ads',
     'back' => 'Back',
+    'type' => 'Type',
 ];

@@ -15,6 +15,7 @@ class LkController extends Controller
         'title' => 'required|min:5|max:150',
         'content' => 'required|min:5|max:5000',
         'price' => 'required|numeric',
+        'type' => 'required|numeric',
     ];
 
     public function __construct()
@@ -63,6 +64,7 @@ class LkController extends Controller
                 'title' => $validated['title'],
                 'content' => $validated['content'],
                 'price' => $validated['price'],
+                'type' => $validated['type'],
             ]);
 
         return redirect()
@@ -83,6 +85,7 @@ class LkController extends Controller
             'title' => $validated['title'],
             'content' => $validated['content'],
             'price' => $validated['price'],
+            'type' => $validated['type'],
         ]);
         $bb->save();
 

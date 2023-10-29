@@ -1,3 +1,7 @@
+@php
+    use App\Enums\Bb\TypeEnum;
+@endphp
+
 @extends('layouts.app')
 
 @section('title', __('lk.creating_ad'))
@@ -36,6 +40,25 @@
                    class="form-control @error('price') is-invalid @enderror"
                    value="{{ old('price') }}">
             @error('price')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="txtType" class="form-label">
+                {{ __('bbs.type') }}
+            </label>
+            <select name="type" id="txtType" class="form-control">
+                <option value="" disabled selected>---</option>
+                @foreach (TypeEnum::cases() as $type)
+                    <option
+                        value="{{ $type->value }}"
+                        {{ null !== old('price') && $type->value === old('price') ? 'selected' : '' }}
+                    >
+                        {{ __($type->text()) }}
+                    </option>
+                @endforeach
+            </select>
+            @error('type')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

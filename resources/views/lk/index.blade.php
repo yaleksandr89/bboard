@@ -48,6 +48,7 @@
                     <tr>
                         <th>{{ __('bbs.title') }}</th>
                         <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
+                        <th>{{ __('bbs.type') }}</th>
                         <th>{{ __('lk.created') }}</th>
                         <th>{{ __('lk.updated') }}</th>
                         <th>{{ __('lk.actions') }}</th>
@@ -58,6 +59,7 @@
                         <tr>
                             <td><h3>{{ $bb->title }}</h3></td>
                             <td>{{ $bb->price }}</td>
+                            <td><x-type :obj="$bb" /></td>
                             <td>{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</td>
                             <td>{{ $bb->updated_at->locale('ru')->isoFormat('LLL') }}</td>
                             <td>
@@ -89,6 +91,7 @@
                     <tr>
                         <th>{{ __('bbs.title') }}</th>
                         <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
+                        <th>{{ __('bbs.type') }}</th>
                         <th>{{ __('lk.created') }}</th>
                         <th>{{ __('lk.deleted') }}</th>
                         <th>{{ __('lk.actions') }}</th>
@@ -99,6 +102,7 @@
                         <tr>
                             <td><h3>{{ $trashedBb->title }}</h3></td>
                             <td>{{ $trashedBb->price }}</td>
+                            <td><x-type :obj="$trashedBb" /></td>
                             <td>{{ $trashedBb->created_at->locale('ru')->isoFormat('LLL') }}</td>
                             <td>{{ $trashedBb->deleted_at->locale('ru')->isoFormat('LLL') }}</td>
                             <td>

@@ -18,6 +18,7 @@
             <tr>
                 <th>{{ __('bbs.title') }}</th>
                 <th>{{ __('bbs.price') }}, {{ __('bbs.rub') }}.</th>
+                <th>{{ __('bbs.type') }}</th>
                 <th>{{ __('bbs.author') }}</th>
                 <th>{{ __('lk.created') }}</th>
                 <th>{{ __('lk.updated') }}</th>
@@ -30,9 +31,8 @@
                 <tr>
                     <td><h4>{{ $bb->title }}</h4></td>
                     <td>{{ $bb->price }}</td>
-                    <td>
-                        {{ $bb->user->name }}
-                    </td>
+                    <td><x-type :obj="$bb" /></td>
+                    <td>{{ $bb->user->name }}</td>
                     <td>{{ $bb->created_at->locale('ru')->isoFormat('LL') }}</td>
                     <td>{{ $bb->updated_at->locale('ru')->isoFormat('LL') }}</td>
                     <td>

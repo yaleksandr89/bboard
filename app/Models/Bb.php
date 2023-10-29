@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Bb\TypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,11 @@ class Bb extends Model
         'title',
         'content',
         'price',
+        'type',
+    ];
+
+    protected $casts = [
+        'type' => TypeEnum::class,
     ];
 
     public function user(): BelongsTo

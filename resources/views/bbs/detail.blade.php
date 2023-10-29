@@ -13,6 +13,7 @@
             <h1 class="my-3 text-center">{{ $bb->title }}</h1>
         </div>
         <div class="card-body">
+            <p class="card-text"><x-type :obj="$bb" /></p>
             <p class="card-text">
                 {{ $bb->content }}
             </p>
@@ -25,13 +26,14 @@
             <a href="{{ route('bbs.index') }}" class="btn btn-sm btn-secondary">
                 {{ __('bbs.list_ads') }}
             </a>
+
         </div>
         <div class="card-footer text-muted">
             <p class="card-text">
                 <span class="card-text">{{ $bb->user->name }}</span>
                 /
                 <span class="card-text">{{ $bb->created_at->locale('ru')->isoFormat('LLL') }}</span>
-
+            </p>
             @if (Gate::allows('update', $bb) || Gate::allows('destroy', $bb))
                 <p class="card-text">
                     @can('update', $bb)
