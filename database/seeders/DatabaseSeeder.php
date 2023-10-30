@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Bb;
 use App\Models\User;
 use App\Models\CategoryBb;
+use App\Models\TagBb;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->admin()->create();
         User::factory()->editor()->create();
         CategoryBb::factory(20)->create();
+        TagBb::factory(50)->create();
         Bb::factory(100)->create();
     }
 }
