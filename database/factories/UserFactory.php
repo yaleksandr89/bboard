@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
@@ -25,6 +26,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+
     public function admin(): Factory
     {
         return $this->state(function (array $attributes) {

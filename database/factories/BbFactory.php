@@ -6,7 +6,6 @@ use App\Models\Bb;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 use Ramsey\Uuid\Exception\BuilderNotFoundException;
 
 class BbFactory extends Factory
@@ -27,11 +26,11 @@ class BbFactory extends Factory
         $isDeleted = $this->faker->boolean(30);
 
         return [
-            'title' => $this->faker->words(random_int(1,3), true),
+            'title' => $this->faker->words(random_int(1, 3), true),
             'content' => $this->faker->text(1000),
             'price' => $this->faker->randomFloat(2, 5, 999999),
             'user_id' => $user,
-            'type' => $this->faker->randomElement([1,2]),
+            'type' => $this->faker->randomElement([1, 2]),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now', 'Europe/Moscow'),
             'deleted_at' => $isDeleted ? $this->faker->dateTimeBetween('-1 month', 'now', 'Europe/Moscow') : null,
