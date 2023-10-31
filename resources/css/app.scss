@@ -1,12 +1,17 @@
 @import 'bootstrap';
+@import 'parts/variables';
+@import 'parts/bootstrap-custom';
+@import 'parts/components';
+@import 'parts/general';
+@import 'parts/helper';
+@import 'parts/bbs';
 
-h1 {
-    background: url('/public/images/logo.png') left / auto 100% no-repeat, url('/public/images/logo.png') right / auto 100% no-repeat;
-}
-
-body {
-    font-family: 'Nunito', sans-serif;
-}
+//.page-link.active, .active>.page-link {
+//    z-index: 3;
+//    color: var(--bs-pagination-active-color);
+//    background-color: var(--bs-pagination-active-bg);
+//    border-color: var(--bs-pagination-active-border-color);
+//}#e54b4b
 
 .pagination-secondary {
     --bs-pagination-color: #6c757d;
@@ -21,8 +26,8 @@ body {
     --bs-pagination-focus-bg: var(--bs-secondary-bg);
     --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
     --bs-pagination-active-color: #fff;
-    --bs-pagination-active-bg: #565e64;
-    --bs-pagination-active-border-color: #51585e;
+    --bs-pagination-active-bg: #e54b4b;
+    --bs-pagination-active-border-color: #bc3e3e;
     --bs-pagination-disabled-color: var(--bs-secondary-color);
     --bs-pagination-disabled-bg: var(--bs-secondary-bg);
     --bs-pagination-disabled-border-color: var(--bs-border-color);

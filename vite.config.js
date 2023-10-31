@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import Laravel from 'laravel-vite-plugin';
 import Unfonts from 'unplugin-fonts/vite'
 
