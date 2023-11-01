@@ -9,6 +9,7 @@ return [
     'updated' => 'Updated',
     'deleted' => 'Deleted',
     'actions' => 'Actions',
+    'show' => 'Show',
     'change' => 'Change',
     'delete' => 'Delete',
     'deleting' => 'Deleting',
