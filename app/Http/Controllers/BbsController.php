@@ -10,7 +10,7 @@ class BbsController extends Controller
     {
         $bbs = Bb::with('user')
             ->latest()
-            ->paginate(6);
+            ->paginate(12);
 
         return view('bbs.index', compact('bbs'));
     }
