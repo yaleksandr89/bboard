@@ -30,17 +30,13 @@ class LkController extends Controller
         if (!$user) {
             throw new RuntimeException('User not fount.');
         }
+
         $bbs = $user
             ->bbs()
             ->latest()
-            ->paginate(perPage: 10, pageName: 'bbs');
+            ->paginate();
 
-        $trashedBbs = $user
-            ->bbs()->onlyTrashed()
-            ->latest()
-            ->paginate(perPage: 10, pageName: 'trashed_bbs');
-
-        return view('lk.index', compact('bbs', 'trashedBbs'));
+        return view('lk.index', compact('bbs'));
     }
 
     public function create(): View
@@ -134,7 +130,23 @@ class LkController extends Controller
             ->save();
 
         return redirect()
-            ->route('lk.index')
+            ->route('lk.trash_page')
             ->with('success', trans('notification.bb.restored.success', ['id' => $deletedDb->id]));
+    }
+
+    public function trash(): View
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            throw new RuntimeException('User not fount.');
+        }
+
+        $trashedBbs = $user
+            ->bbs()->onlyTrashed()
+            ->latest()
+            ->paginate();
+
+        return view('lk.trash', compact('trashedBbs'));
     }
 }

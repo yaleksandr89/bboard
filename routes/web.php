@@ -37,6 +37,8 @@ Route::group(['prefix' => 'lk'], static function () {
     Route::delete('{bb}', [LkController::class, 'destroy'])
         ->name('lk.destroy')
         ->middleware('can:destroy,bb');
+    Route::get('trash', [LkController::class, 'trash'])
+        ->name('lk.trash_page');
     Route::get('{id}/restore', [LkController::class, 'deleted'])
         ->name('lk.trash');
     Route::post('{id}/restore', [LkController::class, 'restore'])

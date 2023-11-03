@@ -50,7 +50,7 @@
     @elseif(isset($deletedDb))
     {{-- Страница восстановления объявления --}}
         <input type="submit" class="btn btn-warning" value="{{ __('lk.restored') }}">
-        <a class="btn btn-secondary" href="{{ route('lk.index') }}">
+        <a class="btn btn-secondary" href="{{ route('lk.trash_page') }}">
             {{ __('lk.list') }}
         </a>
     @else
